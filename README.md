@@ -1,4 +1,4 @@
-# CareSphere AI (ਕੇਅਰਸਫੀਅਰ ਏਆਈ / केयरस्फ़ीयर एआई)
+# CareSphere AI 
 ## AI-Powered Multilingual Healthcare Mobile & Web Application
 **Developed for Healthcare Hackathon: The Builder's Theory 1.0**
 
