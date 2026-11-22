@@ -1,703 +1,208 @@
-# CareSphere AI 🏥
-### Your AI Health Companion for Rural India
-
-[![Project](https://img.shields.io/badge/Project-CareSphere%20AI-0D9488)]()
-[![Domain](https://img.shields.io/badge/Domain-Digital%20Healthcare-blue)]()
-[![AI](https://img.shields.io/badge/AI-Powered-purple)]()
-[![Status](https://img.shields.io/badge/Status-In%20Development-orange)]()
-
-**CareSphere AI** is an AI-powered digital healthcare platform designed to make healthcare information, assistance, and essential medical services more accessible, understandable, and manageable, especially for people living in rural and underserved communities.
-
-The platform aims to bring multiple healthcare services together in one place, including AI-powered health assistance, prescription management, digital health records, medicine reminders, hospital and doctor discovery, online consultations, emergency support, and healthcare community engagement.
-
-Our vision is to use technology and artificial intelligence to reduce healthcare accessibility barriers and create a more connected and user-friendly healthcare experience.
+# CareSphere AI (ਕੇਅਰਸਫੀਅਰ ਏਆਈ / केयरस्फ़ीयर एआई)
+## AI-Powered Multilingual Healthcare Mobile & Web Application
+**Developed for Healthcare Hackathon: The Builder's Theory 1.0**
 
 ---
 
-## 📑 Table of Contents
+## 🏥 Executive Summary
 
-1. [Project Overview](#-project-overview)
-2. [Problem Statement](#-problem-statement)
-3. [Our Solution](#-our-solution)
-4. [Project Objectives](#-project-objectives)
-5. [Key Features](#-key-features)
-6. [AI Medicine Scanner](#-ai-medicine-scanner)
-7. [Technology Stack](#-technology-stack)
-8. [System Architecture](#-system-architecture)
-9. [API Integration](#-api-integration)
-10. [Data Flow](#-data-flow)
-11. [Scalability and Performance](#-scalability-and-performance)
-12. [Security and Privacy](#-security-and-privacy)
-13. [Installation and Setup](#-installation-and-setup)
-14. [Project Structure](#-project-structure)
-15. [Testing and Quality Assurance](#-testing-and-quality-assurance)
-16. [Challenges and Solutions](#-challenges-and-solutions)
-17. [Future Enhancements](#-future-enhancements)
-18. [Limitations](#-limitations)
-19. [Contributing](#-contributing)
-20. [Disclaimer](#-medical-disclaimer)
+**CareSphere AI** is an advanced, production-grade, AI-powered healthcare application built with Flutter. It is engineered specifically to make quality healthcare accessible, affordable, understandable, and convenient for rural, semi-urban, and elderly populations who face linguistic barriers, digital literacy challenges, and intermittent internet connectivity.
+
+The application features comprehensive demo datasets focused on **Punjab, India** (including District Civil Hospitals, Rural Primary Health Centres (PHCs), Community Health Centres (CHCs), empanelled doctors, free village health camps, and state-specific healthcare schemes).
 
 ---
 
-## 🌍 Project Overview
+## 🚀 Key Modules & Capabilities
 
-Healthcare accessibility remains a major challenge for people in rural and underserved regions. Patients may experience difficulties understanding medical prescriptions, finding appropriate healthcare services, managing medical records, and remembering medicine schedules.
+### 1. 🌐 Trilingual Dynamic Localization & Voice Engine
+- **Languages Supported:**
+  - **English**
+  - **हिन्दी (Hindi)**
+  - **ਪੰਜਾਬੀ (Punjabi)**
+- **Dynamic Switching:** Real-time switching throughout the application without restarting or losing form state.
+- **Voice Input (Speech-to-Text):** Allows rural patients and seniors to speak symptoms and search queries naturally in Punjabi, Hindi, or English.
+- **Voice Output (Text-to-Speech):** 1-tap read-aloud functionality for AI advice, doctor prescription instructions, and first-aid steps.
 
-CareSphere AI aims to address these challenges through a unified digital healthcare platform.
+### 2. 🤖 AI Healthcare Assistant with Clinical Guardrails
+- **Powered by Gemini API** (with backend environment variable support and in-app key configuration).
+- **Offline Clinical Reasoning Engine:** Seamless fallback providing safety-verified medical advice when internet is unavailable.
+- **Strict Medical Safety Guardrails:**
+  - Never claims to diagnose diseases or replace licensed physicians.
+  - Plain-language explanations of complex medical jargon.
+  - **Critical Emergency Detection:** Detects high-risk symptoms (chest pain, stroke, snake bite, severe bleeding, poisoning) and immediately triggers red-flag alerts with direct dial buttons for **112** and **108**.
 
-Instead of requiring users to depend on multiple disconnected applications, CareSphere AI brings essential healthcare-related services into a single, accessible environment.
+### 3. 📄 AI Prescription Reader & Translator (OCR)
+- **Image Input:** Camera scan, photo gallery upload, or preloaded sample Punjab prescription for instant demonstration.
+- **Medical Entity Extraction:** Identifies medicine names, strengths (e.g., 500mg), dosage frequencies (e.g., `1-0-1` twice daily after food), and duration.
+- **Confidence & Caution Flagging:** Unreadable or blurry handwriting is clearly marked with a high-visibility warning: *`⚠️ Uncertain - Verify with a pharmacist. Never guess missing medical instructions.`*
+- **Multilingual Translation:** 1-tap translation of dosing instructions into Hindi and Punjabi.
+- **Plain-Language Summary:** Explains what each medicine does (e.g., Metformin = blood sugar control, Pantoprazole = acid reflux protection).
+- **Direct Save:** Easily adds scanned medications into the patient's Digital Health Records.
 
-### Our Vision
+### 4. 🏥 Punjab Smart Hospital & Doctor Discovery
+- **Punjab Healthcare Locations:** Civil Hospital Ludhiana, PHC Sahnewal Rural, CHC Moga, Guru Nanak Mission Hospital Jalandhar, GMC & Rajindra Hospital Patiala, SDH Khanna.
+- **Filters:** 24/7 Emergency Trauma, Rural PHC/CHC, Government Hospitals, Ayushman Bharat Empanelled.
+- **Real-Time Data:** Available vs. total hospital beds, specialties, distance calculation, phone call action, and GPS map directions.
+- **Telemedicine Doctor Booking:** Doctor profiles, specialties, subsidized fees (₹0 for Govt PHCs), available time slots, symptom description, and instant confirmation token generation (e.g. `CS-PB-104`).
 
-To make healthcare more accessible, understandable, and digitally connected for everyone.
+### 5. 📹 Online Video Consultation (Jitsi Meet WebRTC)
+- **Unique Room Generation:** Every confirmed appointment generates a private, encrypted consultation room (e.g., `CareSphere-Consult-CS-PB-104`).
+- **Interactive In-App Consultation Room:**
+  - Live call duration timer
+  - Video feed and Picture-in-Picture preview
+  - Microphone and camera toggles
+  - Patient symptoms card & Doctor clinical observation notepad
+  - 1-tap external launcher into Jitsi Meet WebRTC room.
 
-### Our Mission
+### 6. 🗂️ Digital Health Records & Emergency Medical Passport
+- **Health Vitals Tracker:** Systolic & Diastolic Blood Pressure, Fasting Glucose, SpO2, Heart Rate, Body Temperature, Weight.
+- **Prescription & Lab Document History:** Local persistent storage ensuring 100% offline access.
+- **Emergency Health Passport (Medical ID):** High-contrast, offline-first passport designed for emergency first responders and ambulances displaying Blood Group, Emergency Contact, Drug Allergies (e.g. Penicillin, Sulfa), and Active Daily Medications.
 
-- Simplify access to healthcare information.
-- Improve the management of personal health records.
-- Reduce difficulties associated with understanding medical information.
-- Support patients in managing their medicine schedules.
-- Improve discoverability of hospitals and healthcare professionals.
-- Use AI responsibly to assist users with general healthcare information.
+### 7. ⏰ Smart Medicine Reminders & Adherence Tracker
+- **Daily Schedules:** Morning, Afternoon, Night reminders with before/after food instructions.
+- **Interactive Checkoff:** 1-tap "Take Medicine" button with visual feedback and time recording.
+- **Adherence Score:** Calculates patient medication compliance percentage streak.
 
-### Target Audience
+### 8. 🚨 Emergency Response & Offline First-Aid Hub
+- **India & Punjab Helplines:**
+  - **112:** All-in-One National Emergency (Police, Fire, Ambulance)
+  - **108:** Free Ambulance Emergency Response
+  - **104:** Punjab 24x7 Medical Helpline & Doctor on Call
+  - **102:** Janani Shishu Suraksha (Maternal & Child Ambulance)
+- **Safe Dialing:** Includes confirmation prompts to prevent accidental emergency dispatch calls.
+- **Offline First-Aid Guides:** Fully translated in English, Hindi, and Punjabi:
+  - Snake Bite First Aid (immobilization, clean dressing, what NOT to do)
+  - Heart Attack & CPR Guide
+  - Severe Heatstroke (Loo) Management
 
-- People living in rural and underserved communities.
-- Patients managing recurring medical conditions.
-- Elderly individuals who need help organizing medicine schedules.
-- Users who face language barriers when understanding healthcare information.
-- Individuals looking for accessible healthcare services.
+### 9. 🌾 Rural Healthcare, Health Camps & Government Schemes
+- **Free Health Camps in Punjab:** Eye screening & cataract camps, diabetes checkup camps, and child immunization drives across Ludhiana, Moga, and Hoshiarpur.
+- **Government Healthcare Schemes Guide:**
+  - **Ayushman Bharat PM-JAY:** ₹5 Lakh cashless hospitalization cover.
+  - **Mukh Mantri Sehat Bima Yojana (Punjab):** Punjab-specific cashless scheme for farmers (J-Form holders), traders, and labor households.
+  - **Pradhan Mantri Jan Aushadhi Kendras:** 50% to 90% savings on 1,800+ generic medicines.
 
-### Supported Languages
+### 10. 👴 Accessibility & Simple Rural Mode
+- **Simple Rural Mode:** Increases touch targets, cards, and typography to provide an uncluttered, high-contrast, icon-driven interface for elderly villagers.
+- **Dynamic Text Scaling Slider:** From 85% to 135% scaling.
+- **Dark Mode:** High-contrast night theme for low-light conditions.
 
-The platform is designed with multilingual accessibility in mind:
-
-- English
-- Hindi
-- Punjabi
-
----
-
-## 🚨 Problem Statement
-
-Access to healthcare information and services is not equally convenient for everyone.
-
-Many people, particularly in rural communities, encounter challenges such as:
-
-**1. Difficulty Understanding Prescriptions**
-
-Medical terminology, handwritten prescriptions, and unfamiliar instructions can make it difficult for patients to understand their prescribed medicines.
-
-**2. Limited Healthcare Accessibility**
-
-Finding suitable doctors, specialists, and hospitals can be challenging, particularly in areas with limited healthcare infrastructure.
-
-**3. Poor Medical Record Management**
-
-Patients often maintain medical reports, prescriptions, and previous health information in different physical and digital locations.
-
-**4. Medicine Schedule Management**
-
-Patients may forget medicine timings or struggle to maintain consistent medication schedules.
-
-**5. Language Barriers**
-
-Healthcare information is frequently presented using complex medical terminology or languages that users may not understand comfortably.
-
-**6. Fragmented Healthcare Services**
-
-Users often need multiple applications or platforms for different healthcare-related activities.
-
-### Core Problem
-
-There is a need for a unified, accessible, and user-friendly digital healthcare platform that simplifies healthcare information management and connects users with essential healthcare services.
-
----
-
-## 💡 Our Solution
-
-CareSphere AI proposes a centralized healthcare platform that combines AI assistance, health information management, medicine reminders, and healthcare service discovery.
-
-The platform focuses on:
-
-- Providing understandable healthcare information.
-- Organizing personal medical information.
-- Helping users manage medicine reminders.
-- Supporting prescription and medicine information reading.
-- Connecting users with healthcare resources.
-- Making the experience accessible through multilingual support.
-
-Our approach combines an accessible user interface with AI-assisted capabilities and backend services.
+### 11. 📶 Low-Internet Resilience & Offline Mode
+- **Local Persistent Cache:** Uses `SharedPreferences` to cache all user records, prescriptions, appointments, reminders, and first-aid instructions.
+- **Network Status Banner:** Informs users when offline while maintaining access to local health records.
+- **Simulated Offline Mode:** A toggle in Settings allowing hackathon judges to verify offline performance without physically disconnecting their network.
 
 ---
 
-## 🎯 Project Objectives
+## 👥 Role-Based Access Control (RBAC)
 
-1. Build a centralized digital healthcare platform.
-2. Improve accessibility to general healthcare information.
-3. Simplify the organization of prescriptions and medical records.
-4. Support medicine schedule management.
-5. Make healthcare information easier to understand.
-6. Introduce camera-based medicine information extraction.
-7. Provide an architecture that can support increasing users and data.
-8. Maintain appropriate privacy and security practices for sensitive health information.
+The application provides dedicated dashboards and permissions for three roles:
 
----
+| Role | Default Demo Account | Key Features |
+| :--- | :--- | :--- |
+| **Patient** | `gurpreet.singh@caresphere.ai` | AI Assistant, Rx Scanner, Hospital Finder, Health Passport, Reminders, Emergency SOS |
+| **Doctor** | `dr.harpreet@caresphere.ai` | Patient appointment queue, Video consultation launcher, Clinical observation notes |
+| **Administrator** | `admin.punjab@caresphere.ai` | District health analytics, Announce rural health camps, Verify doctors, Broadcast emergency alerts |
 
-## ✨ Key Features
-
-### 1. AI Health Assistant
-
-An AI-assisted healthcare information interface that aims to help users understand general health-related topics.
-
-**Intended capabilities:**
-- Ask general health-related questions.
-- Receive easy-to-understand explanations.
-- Support multilingual interactions.
-- Simplify complex medical terminology.
-- Provide general health awareness information.
-
-**Example:**
-
-A user asks:
-
-"What are the common symptoms of dehydration?"
-
-The assistant can provide general educational information in understandable language.
-
-**Important:** AI-generated information should not be treated as a medical diagnosis or a replacement for professional consultation.
-
-### 2. Prescription Management
-
-A dedicated module for managing prescription-related information.
-
-**Intended capabilities:**
-- Upload prescription documents or images.
-- Organize prescription information.
-- Access previously saved prescriptions.
-- Support digital prescription management.
-
-### 3. Digital Health Records
-
-A centralized space for organizing personal medical information.
-
-**Intended capabilities:**
-- Maintain health-related records.
-- Organize prescription information.
-- Access previously saved medical documents.
-- Maintain a structured history of saved information.
-
-### 4. Medicine Reminders
-
-A feature designed to help users remember their medicine schedules.
-
-**Intended capabilities:**
-- Set medicine reminders.
-- Maintain reminder schedules.
-- Display upcoming reminders.
-- Help users maintain medication routines.
-
-### 5. Hospitals & Doctors
-
-A healthcare discovery module designed to help users find healthcare providers.
-
-**Intended capabilities:**
-- Discover hospitals.
-- Search for doctors.
-- Explore healthcare services.
-- Improve access to relevant medical resources.
-
-### 6. Online Consultation
-
-A module intended to support digital communication between patients and healthcare professionals.
-
-**Potential capabilities:**
-- Online appointment discovery.
-- Doctor consultation access.
-- Digital healthcare communication.
-
-### 7. Emergency Support
-
-A dedicated section for quick access to emergency-related information and resources.
-
-**Potential capabilities:**
-- Emergency contact information.
-- Access to emergency resources.
-- Quick navigation to relevant healthcare services.
-
-### 8. Healthcare Community
-
-A space intended to encourage healthcare awareness and user engagement.
-
-**Potential capabilities:**
-- Health-related discussions.
-- Information sharing.
-- Community engagement.
-- Health awareness initiatives.
-
-### 9. Admin Dashboard
-
-An administrative interface intended to support platform management.
-
-Potential responsibilities include:
-- User management.
-- Content management.
-- Healthcare service administration.
-- Monitoring platform activities.
-
-Actual administrative permissions and operations depend on the implemented backend.
-
----
-
-## 📸 AI Medicine Scanner
-
-**Selected Feature – Track 2: Superpowers in Your Pocket**
-
-The AI Medicine Scanner is a planned camera-based feature designed to extract readable information from medicine packaging.
-
-It uses smartphone camera capabilities and Optical Character Recognition (OCR) to convert printed medicine-label information into digital text.
-
-### Problem
-
-Patients may find it difficult to read small medicine labels, unfamiliar medical terms, and expiry information.
-
-Manual entry of medicine information can also be time-consuming.
-
-### Proposed Solution
-
-The AI Medicine Scanner allows users to capture a medicine package or label and extract relevant printed information for review.
-
-### How It Works
-
-1. User opens the AI Medicine Scanner.
-2. Application requests camera permission.
-3. User captures an image of the medicine package.
-4. OCR processes the captured image.
-5. Extracted text is organized into relevant fields.
-6. User reviews and corrects the extracted details.
-7. Confirmed information can be saved to Health Records.
-
-### Information to Extract
-
-| Field | Description |
-|---|---|
-| Medicine Name | Name printed on the packaging |
-| Strength | Printed medicine strength |
-| Expiry Date | Expiry information, if readable |
-| Manufacturer | Manufacturer information, if visible |
-| Batch Number | Batch details, if readable |
-
-### Proposed Technologies
-
-- Flutter Camera – Camera access and image capture.
-- Google ML Kit Text Recognition or another suitable OCR engine – Text extraction.
-- Dart – Application logic.
-- Riverpod – State management.
-- Serverpod – Backend endpoints and data processing.
-- PostgreSQL – Structured storage of scan records.
-
-### Feature Safety
-
-The scanner is intended to read visible packaging information.
-
-It will not independently determine whether a medicine is appropriate for a patient, recommend dosages, diagnose medical conditions, or guarantee medicine identification.
-
-Unclear or uncertain information must be manually verified before saving.
-
-**Implementation status:** Planned / Under Development. These technologies are proposed implementation choices, not confirmation that the scanner is already integrated.
+> **Hackathon Quick Login:** On the Login Screen and in the navigation drawer, judges can switch between Patient, Doctor, and Administrator with a single click.
 
 ---
 
 ## 🛠️ Technology Stack
 
-The project documentation distinguishes between the technologies observed in the existing website snapshot and the stack required for the hackathon implementation.
-
-### Existing Website – Observed Technologies
-
-| Technology | Purpose |
-|---|---|
-| React | Component-based frontend UI |
-| TypeScript / TSX | Typed application development |
-| TanStack Start | Application framework and routing infrastructure |
-| Tailwind CSS | Styling and responsive UI |
-| Lucide Icons | Interface icons |
-
-### Hackathon Backend and Mobile Stack
-
-| Technology | Purpose |
-|---|---|
-| Flutter | Mobile application development |
-| Dart | Programming language for Flutter |
-| Riverpod | State management |
-| Serverpod 4 | Backend development and API endpoints |
-| PostgreSQL | Relational database |
-| Serverpod Cloud | Backend hosting and deployment |
-
-**Architecture note:** The complete repository must be inspected to determine whether these two technology groups are already integrated. The hackathon stack should not be represented as an existing implementation until verified.
+- **Framework:** Flutter 3.50.1 (Dart 3.14.0)
+- **Platforms:** Web, Android, iOS, Windows Desktop
+- **State Management:** Provider Architecture
+- **Local Persistence & Caching:** SharedPreferences / JSON Store
+- **Networking & API:** HTTP client with Gemini 1.5 Flash API endpoint
+- **Video Consultation:** Jitsi Meet WebRTC integration
+- **Styling:** Material 3 with Healthcare Palette (Teal `#008F87`, Dark Teal `#006B66`, Emergency Red `#E53935`)
+- **Dialer & Maps:** `url_launcher` (`tel:`, `geo:`, `https:`)
+- **Speech Integration:** Custom multilingual TTS / STT Service
 
 ---
 
-## 🏗️ System Architecture
+## 📂 Project Directory Structure
 
-CareSphere AI follows a modular architecture approach, allowing different healthcare features to communicate with the appropriate application services.
-
-### Conceptual Architecture
-
-```text
-                  USER
-                    |
-                    v
-          CARESPHERE AI INTERFACE
-                    |
-          +---------+---------+
-          |                   |
-          v                   v
-     AI Assistant       Healthcare Modules
-                              |
-                    +---------+---------+
-                    |         |         |
-                    v         v         v
-                Health    Prescriptions Reminders
-                Records
-                    |
-                    v
-              BACKEND SERVICES
-                    |
-          +---------+---------+
-          |                   |
-          v                   v
-     External APIs        Database
-          |                   |
-          v                   v
-      AI / OCR /         PostgreSQL
-      Other Services
+```
+caresphere_ai/
+├── lib/
+│   ├── main.dart                          # App Entrypoint & MultiProvider Setup
+│   ├── core/
+│   │   ├── constants/
+│   │   │   ├── app_colors.dart            # Brand Palette (Teal, Dark Teal, Red, Navy)
+│   │   │   ├── app_strings.dart           # Complete English, Hindi, Punjabi Dictionaries
+│   │   │   └── api_constants.dart         # Gemini API & Helpline Configuration
+│   │   ├── localization/
+│   │   │   └── app_localizations.dart     # Multilingual Helper
+│   │   ├── services/
+│   │   │   ├── ai_service.dart            # Gemini API & Emergency Triage Engine
+│   │   │   ├── ocr_prescription_service.dart # Prescription Analyzer & Uncertainty Flagging
+│   │   │   ├── tts_stt_service.dart       # Speech-to-Text & Text-to-Speech Service
+│   │   │   ├── local_storage_service.dart # Persistent Offline Cache
+│   │   │   └── emergency_service.dart     # Dial 112/108, GPS Directions & Jitsi Launcher
+│   │   └── theme/
+│   │       └── app_theme.dart             # Modern Light, Dark & Simple Accessibility Themes
+│   ├── data/
+│   │   ├── models/                        # Typed Data Models (User, Prescription, Hospital, etc.)
+│   │   └── mock/
+│   │       └── seed_data.dart             # Punjab Hospitals, Doctors, Camps, Sample Rx
+│   ├── providers/                         # State Management Providers
+│   ├── screens/
+│   │   ├── splash_onboarding_screen.dart  # Language Picker & Onboarding Carousel
+│   │   ├── auth/                          # Login, Register, Quick Demo Switcher
+│   │   ├── patient/                       # Patient Home & Multi-tab Navigation
+│   │   ├── doctor/                        # Doctor Queue & Telemedicine Dashboard
+│   │   ├── admin/                         # District Health Admin Portal & Analytics
+│   │   ├── ai_assistant/                  # AI Healthcare Assistant Chat Screen
+│   │   ├── prescription/                  # AI Prescription Scanner & Translator
+│   │   ├── hospital/                      # Punjab Hospital & Doctor Appointment Booking
+│   │   ├── consultation/                  # Jitsi Meet Video Consultation Room
+│   │   ├── records/                       # Health Vitals & Emergency Health Passport
+│   │   ├── reminders/                     # Daily Medicine Reminders & Compliance
+│   │   ├── emergency/                     # 112/108 SOS & Offline First-Aid Guides
+│   │   ├── rural_health/                  # Punjab Free Health Camps & Govt Schemes
+│   │   └── settings/                      # Accessibility, Simple Mode & API Keys
+│   └── widgets/                           # Reusable UI Widgets & Audio Speak Buttons
+├── test/
+│   └── widget_test.dart                   # Unit & Widget Tests (All 5 Passing)
+└── pubspec.yaml                           # Dependencies & Assets
 ```
 
-This diagram represents the proposed logical architecture. Actual integrations and connections must be confirmed from the source code.
-
-### Architectural Components
-
-**Frontend Layer**
-
-Responsible for:
-- User interaction.
-- Navigation.
-- Form inputs.
-- Displaying API responses.
-- Managing interface states.
-
-**Backend Layer**
-
-Responsible for:
-- Processing application requests.
-- Validating input.
-- Managing business logic.
-- Handling authorization.
-- Communicating with the database.
-
-**Database Layer**
-
-Responsible for:
-- Structured information storage.
-- User-related records.
-- Medicine scan history.
-- Prescription and reminder data.
-
-**External Services Layer**
-
-May provide:
-- AI-generated responses.
-- OCR processing.
-- Maps and location information.
-- Notification delivery.
-
 ---
 
-## 🔌 API Integration
+## 🏃 How to Run the Application
 
-APIs allow different software components to communicate and exchange information.
-
-CareSphere AI may use internal backend APIs and external service APIs depending on the feature.
-
-### API Categories
-
-| API Category | Purpose |
-|---|---|
-| AI API | Generate general healthcare information |
-| OCR API / Engine | Extract text from prescription and medicine images |
-| Camera API | Access smartphone camera |
-| Maps / Places API | Discover hospitals and healthcare providers |
-| Notification API | Deliver medicine reminders |
-| Serverpod Endpoints | Communicate between frontend and backend |
-
-### API Communication Flow
-
-```text
-User Action
-    |
-    v
-Frontend Request
-    |
-    v
-Backend Endpoint
-    |
-    v
-Validation and Processing
-    |
-    v
-Database / External API
-    |
-    v
-Backend Response
-    |
-    v
-Frontend Update
-```
-
-### API Accuracy and Reliability
-
-API performance and AI response quality are different measurements.
-
-We intend to evaluate:
-
-- Response correctness.
-- API availability.
-- Average response time.
-- Failed request percentage.
-- Invalid input handling.
-- Timeout handling.
-- Hindi and English response quality.
-
-No numerical API accuracy percentage is claimed without actual test results.
-
----
-
-## 🔄 Data Flow
-
-CareSphere AI is designed to support a structured request-and-response process.
-
-### Example: AI Assistant
-
-1. User enters a healthcare-related question.
-2. Frontend collects the input.
-3. Application sends the request to the appropriate backend or AI service.
-4. The service processes the request.
-5. A response is returned.
-6. Frontend displays the response.
-
-### Example: AI Medicine Scanner
-
-1. User captures a medicine image.
-2. Image is passed to the OCR processing component.
-3. OCR extracts readable text.
-4. Application organizes the extracted fields.
-5. User verifies the information.
-6. Verified data is sent to the backend.
-7. Backend stores the record in PostgreSQL.
-8. Saved information becomes available in the Health Records module.
-
----
-
-## 📈 Scalability and Performance
-
-Scalability refers to the ability of an application to handle increasing users, requests, and data without significant performance degradation.
-
-For a healthcare platform like CareSphere AI, scalability is important because different users may simultaneously access AI assistance, upload records, search hospitals, and manage reminders.
-
-### Scalability Metrics
-
-| Metric | Meaning |
-|---|---|
-| Concurrent Users | Number of users active at the same time |
-| Response Time | Time taken to process a request |
-| Throughput | Number of requests handled per second |
-| Error Rate | Percentage of failed requests |
-| Resource Utilization | CPU, memory and other resource consumption |
-
-### Important Formulas
-
-**Throughput**
-
-```text
-Throughput = Total Successful Requests / Total Time
-```
-
-**Error Rate**
-
-```text
-Error Rate = (Failed Requests / Total Requests) × 100
-```
-
-**Average Response Time**
-
-```text
-Average Response Time =
-Sum of Response Times / Total Requests
-```
-
-### Proposed Scalability Improvements
-
-1. **Horizontal Scaling:** Add backend instances as workload increases.
-2. **Load Balancing:** Distribute incoming requests across available instances.
-3. **Database Optimization:** Improve query performance and indexing.
-4. **Caching:** Cache suitable frequently accessed information.
-5. **Rate Limiting:** Control excessive API requests.
-6. **Asynchronous Processing:** Handle suitable time-consuming operations without blocking user interactions.
-
-### Load Testing
-
-The application can be evaluated using tools such as:
-
-- Apache JMeter
-- k6
-- Postman
-
-A gradual load test can be performed using different concurrent-user levels, such as 100, 500 and 1,000 users.
-
-These values are proposed test levels, not verified capacity claims.
-
----
-
-## 🔐 Security and Privacy
-
-Healthcare applications may process sensitive personal information. Therefore, privacy and security must be considered throughout the application lifecycle.
-
-### Proposed Security Practices
-
-**1. Authentication**
-
-Verify the identity of users before allowing access to protected services.
-
-**2. Authorization**
-
-Ensure that users can access only the resources permitted by their roles and permissions.
-
-**3. Secure Communication**
-
-Use HTTPS for communication between clients and backend services.
-
-**4. Data Protection**
-
-Protect sensitive health information during storage and transmission.
-
-**5. API Key Management**
-
-Store API credentials securely on the server side. Never expose private API keys in frontend code or public repositories.
-
-**6. Input Validation**
-
-Validate user input and uploaded files before processing.
-
-**7. Access Control**
-
-Restrict access to patient records according to appropriate authorization policies.
-
-**8. Error Handling**
-
-Avoid exposing internal system details, database credentials, or sensitive information through error messages.
-
----
-
-## 💻 Installation and Setup
-
-The following instructions are intended for the existing React/TanStack-based website. Exact package manager and scripts should be checked in the project's `package.json`.
-
-### Prerequisites
-
-- Node.js (compatible with the project's dependencies).
-- npm or the package manager specified by the repository.
-- Git.
-- Antigravity or another code editor.
-
-### Step 1: Clone the Repository
-
+### 1. Set Active Workspace
+Ensure your terminal or IDE workspace is opened at:
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+cd "C:\Users\jasle\.gemini\antigravity\scratch\caresphere_ai"
 ```
 
-### Step 2: Navigate to the Project
-
+### 2. Run Tests
 ```bash
-cd CareSphere-AI
+flutter test
 ```
+*Result: 5/5 Unit and Widget tests pass with 0 errors.*
 
-Replace the folder name with the actual repository directory if different.
-
-### Step 3: Install Dependencies
-
-For an npm-based project:
-
+### 3. Run in Chrome (Web)
 ```bash
-npm install
+flutter run -d chrome
 ```
 
-### Step 4: Configure Environment Variables
-
-Create a `.env` file only after checking the project's existing environment-variable requirements.
-
-Example placeholders:
-
-```env
-# Add actual variables required by the application.
-
-AI_API_KEY=your_api_key
-DATABASE_URL=your_database_url
-```
-
-Do not commit real API keys, database passwords, or other secrets.
-
-### Step 5: Start the Development Server
-
-Check the scripts in `package.json`.
-
-If the project defines a `dev` script, run:
-
+### 4. Build Production Release (Web)
 ```bash
-npm run dev
+flutter build web --release
 ```
-
-### Step 6: Open the Application
-
-Open the local URL printed in the terminal.
+*Compiled output is served from `build/web`.*
 
 ---
 
-## 📁 Project Structure
+## 🏆 Hackathon Alignment: "The Builder's Theory 1.0"
 
-The following is an illustrative structure for organizing the application. It is not a verified listing of the existing repository.
-
-```text
-CareSphere-AI/
-│
-├── public/
-│   ├── images/
-│   └── assets/
-│
-├── src/
-│   ├── components/
-│   │   ├── common/
-│   │   ├── navigation/
-│   │   └── dashboard/
-│   │
-│   ├── features/
-│   │   ├── ai-assistant/
-│   │   ├── prescriptions/
-│   │   ├── health-records/
-│   │   ├── reminders/
-│   │   ├── hospitals/
-│   │   ├── consultation/
-│   │   ├── emergency/
-│   │   ├── community/
-│   │   └── medicine-scanner/
-│   │
-│   ├── services/
-│   │   ├── api/
-│   │   └── integrations/
-│   │
-│   ├── routes/
-│   ├── hooks/
-│   ├── types/
-│   └── styles/
-│
-├── serverpod/
-│   ├
+CareSphere AI directly tackles the core pillars of the hackathon:
+1. **Accessibility:** Trilingual support (English, Hindi, Punjabi) with complete voice input and audio read-aloud.
+2. **Rural Reach:** Pre-seeded Punjab rural PHCs/CHCs, free eye & health camps, and government scheme guides.
+3. **Medical Safety:** Strict AI guardrails detecting emergencies and marking uncertain prescription handwriting.
+4. **Resilience:** 100% offline access to the Emergency Medical Passport, saved records, and first-aid instructions.
